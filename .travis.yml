@@ -13,14 +13,13 @@ addons:
       - g++-4.9
 
 before_install:
+  - if [ $CXX == "gcc" ]; then export CC=gcc-4.9; fi
   - if [ $CXX == "g++" ]; then export CXX=g++-4.9; fi
 
   # update cmake
   - bash install-cmake.sh
 
   # check versions
-  - g++ --version
-  - clang++ --version
   - $HOME/cmake/bin/cmake --version
 
 install:
