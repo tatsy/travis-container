@@ -1,4 +1,4 @@
-travis-new-infra
+travis-container
 ===
 
-> Test project for Travis CI's new infrastructure
+> Test project for Travis CI's container-based infrastructure.
