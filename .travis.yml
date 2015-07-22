@@ -1,0 +1,35 @@
+language: cpp
+sudo: false
+compiler:
+  - gcc
+  - clang
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-4.9
+      - g++-4.9
+
+before_install:
+  - if [ $CXX == "g++" ]; then export CXX=g++-4.9; fi
+
+  # update cmake
+  - bash install-cmake.sh
+
+  # check versions
+  - g++ --version
+  - clang++ --version
+  - $HOME/cmake/bin/cmake --version
+
+install:
+  - $HOME/cmake/bin/cmake .
+  - $HOME/cmake/bin/cmake --build .
+
+script:
+  - ls -R $HOME/cmake/bin
+
+cache:
+  directories:
+    - $HOME/cmake
